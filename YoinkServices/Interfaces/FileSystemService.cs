@@ -1,9 +1,8 @@
 ﻿using YoinkContracts.Results;
 
-namespace YoinkServices.Interfaces
+namespace YoinkServices.Interfaces;
+
+public interface IFileSystemService
 {
-    public interface IFileSystemService
-    {
-        Task<ListFoldersResult> ListFoldersAsync();
-    }
+    public Task<ListFoldersResult> ListFolderAsync();
 }

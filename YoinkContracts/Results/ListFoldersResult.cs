@@ -2,11 +2,11 @@
 {
     public class ListFoldersResult
     {
-        public ListFoldersResult(YoinkFolder currentFolder)
+        public ListFoldersResult(YoinkFolder folder)
         {
-            CurrentFolder = currentFolder;
+            Folder = folder;
         }
 
-        public YoinkFolder CurrentFolder { get; set; }
+        public YoinkFolder Folder { get; set; }
     }
 }

@@ -6,7 +6,7 @@ namespace YoinkServices
 {
     public class FileSystemService : IFileSystemService
     {
-        public async Task<ListFoldersResult> ListFoldersAsync()
+        public async Task<ListFoldersResult> ListFolderAsync()
         {
             return new ListFoldersResult(new YoinkFolder(YoinkFolder.BaseFolder, new List<YoinkFile>()));
         }
