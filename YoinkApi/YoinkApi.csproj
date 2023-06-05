@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\YoinkContracts\YoinkContracts.csproj" />
-      <ProjectReference Include="..\YoinkServices\YoinkServices.csproj"/>
+      <ProjectReference Include="..\YoinkServices\YoinkServices.csproj" />
   </ItemGroup>
 
 </Project>

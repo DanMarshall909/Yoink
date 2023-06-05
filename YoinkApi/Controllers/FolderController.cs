@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using YoinkContracts.Results;
+using YoinkServices;
 using YoinkServices.Interfaces;
 
 namespace YoinkApi.Controllers;
@@ -18,8 +19,23 @@ public class FolderController : ControllerBase
     }
 
     [HttpGet(Name = "ListFolder")]
-    public async Task<ActionResult<ListFoldersResult>> GetAsync()
+    public async Task<ActionResult<ListFoldersResult>> GetAsync(string path = "/")
     {
-        return Ok(await _fileSystemService.ListFolderAsync());
+        var listFoldersResult = await _fileSystemService
+            .ListFolder(path, new FileFilter())
+            .ConfigureAwait(false);
+        
+        return Ok(listFoldersResult);
+    }
+    
+    
+    [HttpGet(Name = "GetFileInfo")]
+    public  ActionResult<GetFileInfoResult> GetFileInfo(string path)
+    {
+        var listFoldersResult = _fileSystemService
+            .GetFileInfo(path);
+        
+        return Ok(listFoldersResult);
     }
 }
+

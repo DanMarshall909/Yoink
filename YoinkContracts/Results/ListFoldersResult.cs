@@ -1,12 +1,18 @@
 ﻿namespace YoinkContracts.Results
 {
-    public class ListFoldersResult
+    public class ListFoldersResult : IListFoldersResult
     {
-        public ListFoldersResult(YoinkFolder folder)
+        public ListFoldersResult(IReadOnlyCollection<Folder> subfolders,
+            IReadOnlyCollection<File> files,
+            Folder? parent,
+            IReadOnlyCollection<ResultMessage> messages)
         {
-            Folder = folder;
+            Subfolders = subfolders;
+            Files = files;
+            Messages = messages;
         }
-
-        public YoinkFolder Folder { get; set; }
+        public IReadOnlyCollection<Folder> Subfolders { get; }
+        public IReadOnlyCollection<File> Files { get; }
+        public IReadOnlyCollection<ResultMessage> Messages { get; }
     }
 }
