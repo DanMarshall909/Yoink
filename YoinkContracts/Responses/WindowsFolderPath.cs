@@ -1,4 +1,6 @@
-﻿namespace YoinkContracts.Results;
+﻿using Serilog;
+
+namespace YoinkContracts.Responses;
 
 public record WindowsFolderPath : Path
 {
@@ -30,6 +32,7 @@ public record WindowsFolderPath : Path
         }
         catch (Exception e)
         {
+            Log.Error(e, "Invalid path '{WindowsPath}'");
             return (false, $"Invalid path '{windowsPath}'");
         }
     }

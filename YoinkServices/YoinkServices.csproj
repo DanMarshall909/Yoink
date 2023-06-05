@@ -12,9 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="JetBrains.ReSharper.TestRunner.Merged">
-      <HintPath>..\..\..\..\..\Program Files\JetBrains\Rider\r2r\2023.1.1R\5C1B19857D0B25A255809DC8970D164\TestRunner\netcoreapp3.0\JetBrains.ReSharper.TestRunner.Merged.dll</HintPath>
-    </Reference>
     <Reference Include="YoinkContracts">
       <HintPath>..\YoinkApi\bin\Debug\net7.0\YoinkContracts.dll</HintPath>
     </Reference>

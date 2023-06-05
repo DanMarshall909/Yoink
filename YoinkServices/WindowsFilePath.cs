@@ -1,8 +1,8 @@
-﻿using Path = YoinkContracts.Results.Path;
+﻿using Path = YoinkContracts.Responses.Path;
 
 namespace YoinkServices;
 
-public record WindowsFilePath : Path
+public record WindowsFilePath : YoinkContracts.Responses.Path
 {
     private readonly string _path = string.Empty;
 

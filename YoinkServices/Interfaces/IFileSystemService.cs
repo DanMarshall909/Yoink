@@ -1,9 +1,9 @@
-﻿using YoinkContracts.Results;
+﻿using YoinkContracts.Responses;
 
 namespace YoinkServices.Interfaces;
 
 public interface IFileSystemService
 {
-    public Task<ListFoldersResult> ListFolder(string path, FileFilter filter);
+    public Task<ListFoldersResponse> ListFolder(string path, FileFilter filter);
     public FileInfo GetFileInfo(string path);
 }

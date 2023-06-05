@@ -1,4 +1,4 @@
-﻿namespace YoinkContracts.Results;
+﻿namespace YoinkContracts.Responses;
 
 public abstract record Path
 {

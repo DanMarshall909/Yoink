@@ -1,36 +1,29 @@
-﻿using Serilog;
-using YoinkContracts.Results;
-using File = YoinkContracts.Results.File;
+﻿using YoinkContracts.Models;
+using YoinkContracts.Responses;
+using File = YoinkContracts.Models.File;
 
 namespace YoinkServices
 {
     public class WindowsFileSystemService : IFileSystemService
     {
-        public Task<ListFoldersResult> ListFolder(string path, FileFilter filter)
+        public Task<ListFoldersResponse> ListFolder(string path, FileFilter filter)
         {
             try
             {
                 DirectoryInfo di = new(path);
                 List<File> files = di.GetFiles()
-                    .Select(x => new File(new WindowsFilePath { FullName = x.FullName }))
+                    .Select(fi => new File(new WindowsFilePath { FullName = fi.FullName }))
                     .ToList();
                 var baseFolderPath = new WindowsFolderPath(di);
                 var baseFolder = new Folder(baseFolderPath, null);
                 var subfolders = GetSubfolders(di: di, baseFolder: baseFolder).ToList();
                 
-                return Task.FromResult(new ListFoldersResult(subfolders, files,
-                    new Folder(baseFolderPath,
-                        null), new List<ResultMessage>()));
+                return Task.FromResult(new ListFoldersResponse(subfolders, files));
             }
             catch (Exception e)
             {
-                var messages = new List<ResultMessage>();
-                messages.Add(new ResultMessage(e));
-                Log.Error(e, "Error while listing folder");
-                return Task.FromResult(new ListFoldersResult(new List<Folder>(), new List<File>(), null, messages));
+                return Task.FromResult(ListFoldersResponse.From(e));
             }
-
-            
         }
 
         private static IEnumerable<Folder> GetSubfolders(DirectoryInfo di, Folder baseFolder)

@@ -1,4 +1,5 @@
-﻿using YoinkContracts.Results;
+﻿using YoinkContracts.Models;
+using YoinkContracts.Responses;
 
 namespace YoinkServices;
 
