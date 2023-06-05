@@ -25,7 +25,7 @@ public record WindowsFilePath : Path
             FileInfo fi = new(windowsPath);
             return (true, fi.FullName);
         }
-        catch (Exception e)
+        catch (Exception)
         {
             return (false, $"Invalid path '{windowsPath}'");
         }
